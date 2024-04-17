@@ -31,7 +31,7 @@ return new class extends Migration
             $table->boolean('has_discount')->default(0);
             $table->boolean('has_stock')->default(0);
             $table->unsignedInteger('viewed')->default(0);
-            $table->unsignedBigInteger('random')->default(0);
+            $table->unsignedInteger('random')->default(0);
             $table->timestamps();
         });
     }
