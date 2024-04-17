@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gender;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,16 @@ class GenderSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $objs = [
+            'Women',
+            'Men',
+            'Kids',
+        ];
+
+        foreach ($objs as $obj) {
+            Gender::create([
+                'name' => $obj,
+            ]);
+        }
     }
 }
