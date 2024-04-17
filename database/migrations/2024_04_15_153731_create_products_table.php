@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->unsignedDouble('discounted_price')->default(0);
-            $table->unsignedDouble('selling_price')->default(0);
+            $table->double('discounted_price')->default(0);
+            $table->double('selling_price')->default(0);
             $table->boolean('has_discount')->default(0);
             $table->boolean('has_stock')->default(0);
             $table->unsignedInteger('viewed')->default(0);
