@@ -17,15 +17,17 @@ class ProductVariantSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 500; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $category = Category::inRandomOrder()->first();
             $brand = Brand::inRandomOrder()->first();
             $groupId = str()->random(10);
             $groupName = fake()->unique()->streetName();
             $price = fake()->numberBetween(111, 999);
 
-            for ($j = 0; $j < rand(3, 5); $j++) {
-                $color = AttributeValue::where('attribute_id', 1)->inRandomOrder()->first();
+            $colors = [];
+            for ($j = 0; $j < rand(5, 8); $j++) {
+                $color = AttributeValue::where('attribute_id', 1)->whereNotIn('id', $colors)->inRandomOrder()->first();
+                $colors[] = $color->id;
                 $productId = $groupId . '-' . str($color->name)->slug();
                 $productName = $color->name . ' ' . $groupName;
                 $hasDiscount = fake()->boolean(20);
@@ -38,6 +40,7 @@ class ProductVariantSeeder extends Seeder
                     'product_id' => $productId,
                     'group_id' => $groupId,
                     'name' => $productName,
+                    'slug' => str()->random(5),
                     'description' => fake()->paragraph(rand(1, 3)),
                     'discounted_price' => $hasDiscount ? $price - fake()->numberBetween(1, 99) : $price,
                     'selling_price' => $price,
@@ -46,9 +49,13 @@ class ProductVariantSeeder extends Seeder
                     'viewed' => fake()->numberBetween(1, 999),
                     'random' => fake()->numberBetween(1, 9999),
                 ]);
+                $product->slug = str($product->name)->slug() . '-' . $product->id;
+                $product->update();
 
-                for ($k = 0; $k < rand(3, 5); $k++) {
-                    $size = AttributeValue::where('attribute_id', 2)->inRandomOrder()->first();
+                $sizes = [];
+                for ($k = 0; $k < rand(5, 8); $k++) {
+                    $size = AttributeValue::where('attribute_id', 2)->whereNotIn('id', $sizes)->inRandomOrder()->first();
+                    $sizes[] = $size->id;
                     $variantId = $productId . '-' . str($size->name)->slug();
 
                     Variant::create([

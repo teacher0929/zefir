@@ -22,6 +22,7 @@ class GenderSeeder extends Seeder
         foreach ($objs as $obj) {
             Gender::create([
                 'name' => $obj,
+                'slug' => str($obj)->slug(),
             ]);
         }
     }

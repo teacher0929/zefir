@@ -59,24 +59,33 @@ class CategorySeeder extends Seeder
             $grand = Category::create([
                 'gender_id' => $gender,
                 'name' => $objs[$i]['name'],
+                'slug' => str()->random(5),
                 'sort_order' => $i + 1,
             ]);
+            $grand->slug = str($grand->name)->slug() . '-' . $grand->id;
+            $grand->update();
 
             for ($j = 0; $j < count($objs[$i]['categories']); $j++) {
                 $parent = Category::create([
                     'gender_id' => $gender,
                     'parent_id' => $grand->id,
                     'name' => $objs[$i]['categories'][$j]['name'],
+                    'slug' => str()->random(5),
                     'sort_order' => $j + 1,
                 ]);
+                $parent->slug = str($parent->name)->slug() . '-' . $parent->id;
+                $parent->update();
 
                 for ($k = 0; $k < count($objs[$i]['categories'][$j]['categories']); $k++) {
-                    Category::create([
+                    $category = Category::create([
                         'gender_id' => $gender,
                         'parent_id' => $parent->id,
                         'name' => $objs[$i]['categories'][$j]['categories'][$k],
+                        'slug' => str()->random(5),
                         'sort_order' => $k + 1,
                     ]);
+                    $category->slug = str($category->name)->slug() . '-' . $category->id;
+                    $category->update();
                 }
             }
         }

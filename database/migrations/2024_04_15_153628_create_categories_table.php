@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_id')->index()->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->nullOnDelete();
             $table->string('name');
+            $table->string('slug')->index();
             $table->unsignedInteger('sort_order')->default(1);
         });
     }

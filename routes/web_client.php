@@ -11,5 +11,5 @@ Route::controller(ProductController::class)
     ->name('products.')
     ->group(function () {
         Route::get('', 'index')->name('index');
-        Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
+        Route::get('/{slug}', 'show')->name('show')->where('slug', '[A-Za-z0-9-]+');
     });

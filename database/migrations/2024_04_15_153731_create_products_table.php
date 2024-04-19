@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('product_id')->index();
             $table->string('group_id')->index();
             $table->string('name');
+            $table->string('slug')->index();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->double('discounted_price')->default(0);
