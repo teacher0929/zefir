@@ -42,10 +42,12 @@ class BrandSeeder extends Seeder
         ];
 
         foreach ($objs as $obj) {
-            Brand::create([
+            $brand = Brand::create([
                 'name' => $obj,
-                'slug' => str($obj)->slug(),
+                'slug' => str()->random(5),
             ]);
+            $brand->slug = str($brand->name)->slug() . '-' . $brand->id;
+            $brand->update();
         }
     }
 }

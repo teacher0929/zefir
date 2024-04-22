@@ -6,7 +6,10 @@
     <title>@yield('title') - ZEFIR</title>
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/splide.min.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/splide.min.js') }}"></script>
 </head>
 <body class="bg-light">
 @include('client.app.nav')

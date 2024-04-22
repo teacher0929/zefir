@@ -20,10 +20,12 @@ class GenderSeeder extends Seeder
         ];
 
         foreach ($objs as $obj) {
-            Gender::create([
+            $gender = Gender::create([
                 'name' => $obj,
-                'slug' => str($obj)->slug(),
+                'slug' => str()->random(5),
             ]);
+            $gender->slug = str($gender->name)->slug() . '-' . $gender->id;
+            $gender->update();
         }
     }
 }
