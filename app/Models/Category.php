@@ -25,6 +25,12 @@ class Category extends Model
     }
 
 
+    public function homeProducts()
+    {
+        return $this->hasMany(Product::class, 'home_category_id');
+    }
+
+
     public function parent()
     {
         return $this->belongsTo(self::class, 'parent_id');

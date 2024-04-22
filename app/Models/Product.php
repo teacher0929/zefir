@@ -32,6 +32,12 @@ class Product extends Model
     }
 
 
+    public function homeCategory()
+    {
+        return $this->belongsTo(Category::class, 'home_category_id');
+    }
+
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
