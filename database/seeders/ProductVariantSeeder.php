@@ -18,7 +18,7 @@ class ProductVariantSeeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 100; $i++) {
-            $category = Category::inRandomOrder()->first();
+            $category = Category::whereNotNull('grandparent_id')->inRandomOrder()->first();
             $brand = Brand::inRandomOrder()->first();
             $groupId = str()->random(10);
             $groupName = fake()->unique()->streetName();

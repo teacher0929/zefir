@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Navbar">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Navbar">
     <div class="container-xl">
         <a class="navbar-brand fw-bold" href="{{ route('home') }}">ZEFIR</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
@@ -22,10 +22,10 @@
                                        href="{{ route('products.index', ['category' => $child->slug]) }}">
                                         {{ $child->name }}
                                     </a>
-                                    <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-0 g-md-1">
+                                    <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-0">
                                         @foreach($child->child as $grandchild)
                                             <div class="col">
-                                                <a class="link-secondary text-decoration-none text-truncate"
+                                                <a class="link-dark text-decoration-none text-truncate"
                                                    href="{{ route('products.index', ['category' => $grandchild->slug]) }}">
                                                     {{ $grandchild->name }}
                                                 </a>

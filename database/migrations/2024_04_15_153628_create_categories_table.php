@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('gender_id')->index()->nullable();
             $table->foreign('gender_id')->references('id')->on('genders')->nullOnDelete();
+            $table->unsignedBigInteger('grandparent_id')->index()->nullable();
+            $table->foreign('grandparent_id')->references('id')->on('categories')->nullOnDelete();
             $table->unsignedBigInteger('parent_id')->index()->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->nullOnDelete();
             $table->string('name');

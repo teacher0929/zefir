@@ -31,9 +31,21 @@ class Category extends Model
     }
 
 
+    public function grandParent()
+    {
+        return $this->belongsTo(self::class, 'grandparent_id');
+    }
+
+
     public function parent()
     {
         return $this->belongsTo(self::class, 'parent_id');
+    }
+
+
+    public function grandChild()
+    {
+        return $this->hasMany(self::class, 'grandparent_id');
     }
 
 
