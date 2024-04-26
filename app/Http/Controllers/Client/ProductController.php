@@ -94,7 +94,7 @@ class ProductController extends Controller
         $genders = Gender::orderBy('id')
             ->get();
         $categories = Category::whereNull('parent_id')
-            ->with('child.child')
+            ->with('children.children')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();

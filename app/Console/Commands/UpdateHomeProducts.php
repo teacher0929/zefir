@@ -33,11 +33,11 @@ class UpdateHomeProducts extends Command
             ->update(['home_category_id' => null]);
 
         $grandparents = Category::whereNull('parent_id')
-            ->with('grandChild')
+            ->with('grandChildren')
             ->get();
 
         foreach ($grandparents as $grandparent) {
-            Product::whereIn('category_id', $grandparent->grandChild->pluck('id'))
+            Product::whereIn('category_id', $grandparent->grandChildren->pluck('id'))
                 ->where('has_stock', 1)
                 ->where('has_discount', 1)
                 ->inRandomOrder()

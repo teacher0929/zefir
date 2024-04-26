@@ -21,11 +21,11 @@
                     <option value="{{ $grandparent->slug }}" {{ $grandparent->slug == $f_category ? 'selected':'' }}>
                         {{ $grandparent->name }}
                     </option>
-                    @foreach($grandparent->child as $parent)
+                    @foreach($grandparent->children as $parent)
                         <option value="{{ $parent->slug }}" {{ $parent->slug == $f_category ? 'selected':'' }}>
                             {{ $grandparent->name }} / {{ $parent->name }}
                         </option>
-                        @foreach($parent->child as $child)
+                        @foreach($parent->children as $child)
                             <option value="{{ $child->slug }}" {{ $child->slug == $f_category ? 'selected':'' }}>
                                 {{ $grandparent->name }} / {{ $parent->name }} / {{ $child->name }}
                             </option>

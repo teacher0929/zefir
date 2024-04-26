@@ -43,13 +43,13 @@ class Category extends Model
     }
 
 
-    public function grandChild()
+    public function grandChildren()
     {
         return $this->hasMany(self::class, 'grandparent_id');
     }
 
 
-    public function child()
+    public function children()
     {
         return $this->hasMany(self::class, 'parent_id');
     }
