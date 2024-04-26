@@ -17,16 +17,20 @@
             <label for="category" class="form-label fw-semibold">Category</label>
             <select class="form-select" id="category" name="category">
                 <option value>-</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->slug }}" {{ $category->slug == $f_category ? 'selected':'' }}>
-                        @if(isset($category->grandparent_id))
-                            {{ $category->grandparent->name }} /
-                        @endif
-                        @if(isset($category->parent_id))
-                            {{ $category->parent->name }} /
-                        @endif
-                        {{ $category->name }}
+                @foreach($categories as $grandparent)
+                    <option value="{{ $grandparent->slug }}" {{ $grandparent->slug == $f_category ? 'selected':'' }}>
+                        {{ $grandparent->name }}
                     </option>
+                    @foreach($grandparent->child as $parent)
+                        <option value="{{ $parent->slug }}" {{ $parent->slug == $f_category ? 'selected':'' }}>
+                            {{ $grandparent->name }} / {{ $parent->name }}
+                        </option>
+                        @foreach($parent->child as $child)
+                            <option value="{{ $child->slug }}" {{ $child->slug == $f_category ? 'selected':'' }}>
+                                {{ $grandparent->name }} / {{ $parent->name }} / {{ $child->name }}
+                            </option>
+                        @endforeach
+                    @endforeach
                 @endforeach
             </select>
         </div>

@@ -36,15 +36,15 @@ class ProductController extends Controller
         $category = isset($f_category) ? Category::where('slug', $f_category)->firstOrFail() : null;
         $categories = [];
         if (isset($f_category)) {
-            if (isset($category->grandparent_id)) {
+            if (isset($category->grandparent_id)) { // branch 3
                 $categories = [$category->id];
 
-            } elseif (isset($category->parent_id)) {
+            } elseif (isset($category->parent_id)) { // branch 2
                 $categories = Category::where('parent_id', $category->id)
                     ->get()
                     ->pluck('id')
                     ->toArray();
-            } else {
+            } else { // branch 1
                 $categories = Category::where('grandparent_id', $category->id)
                     ->get()
                     ->pluck('id')
@@ -93,17 +93,11 @@ class ProductController extends Controller
 
         $genders = Gender::orderBy('id')
             ->get();
-
-        $categories = Category::when(isset($f_category) and isset($category->parent_id), function ($query) use ($category) {
-            return $query->where('parent_id', $category->parent_id);
-        }, function ($query) {
-            return $query->whereNull('parent_id');
-        })
-            ->with('parent', 'grandparent')
+        $categories = Category::whereNull('parent_id')
+            ->with('child.child')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();
-
         $brands = Brand::orderBy('name')
             ->get();
         $colors = AttributeValue::where('attribute_id', 1)
@@ -133,5 +127,11 @@ class ProductController extends Controller
                 'f_sizes' => $f_sizes,
                 'f_sortBy' => $f_sortBy,
             ]);
+    }
+
+
+    public function show($slug)
+    {
+
     }
 }
