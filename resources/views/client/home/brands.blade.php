@@ -4,13 +4,10 @@
             BRANDS <i class="bi-chevron-right"></i>
         </a>
     </div>
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-2 g-md-3">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3 g-md-4">
         @foreach($brands as $brand)
             <div class="col">
-                <a href="{{ route('products.index', ['brand' => $brand->slug]) }}"
-                   class="link-dark text-decoration-none">
-                    {{ $brand->name }} <i class="bi-chevron-right"></i>
-                </a>
+                @include('client.app.brand')
             </div>
         @endforeach
     </div>

@@ -3,7 +3,7 @@
         @if($product->image)
 
         @else
-            <img src="{{ asset('img/' . $product->gender_id . '.jpg') }}" alt="" class="img-fluid rounded-3">
+            <img src="{{ asset('img/gender-' . $product->gender_id . '.jpg') }}" alt="" class="img-fluid rounded-3">
         @endif
     </div>
     <div class="h6 mb-1">
