@@ -1,4 +1,4 @@
-<div class="bg-white h-100 rounded-3 p-1 p-sm-2 shadow-sm">
+<div class="position-relative bg-white h-100 rounded-3 p-1 p-sm-2 shadow-sm">
     <div class="mb-2">
         @if($product->image)
 
@@ -7,20 +7,14 @@
         @endif
     </div>
     <div class="h6 mb-1">
-        <a href="{{ route('products.index', ['brand' => $product->brand->slug]) }}"
-           class="link-dark text-decoration-none">
-            {{ $product->brand->name }}
-        </a>
+        {{ $product->brand->name }}
     </div>
     <div class="h6 mb-1">
-        <a href="{{ route('products.index', ['category' => $product->category->slug]) }}"
-           class="link-dark text-decoration-none">
-            {{ $product->category->name }}
-        </a>
+        {{ $product->category->name }}
     </div>
     <div>
         <a href="{{ route('products.show', $product->slug) }}"
-           class="link-secondary text-decoration-none">
+           class="link-secondary text-decoration-none stretched-link">
             {{ $product->name }}
         </a>
     </div>
@@ -36,5 +30,4 @@
             {{ number_format($product->discounted_price, 2, '.', ' ') }} <small>TMT</small>
         </div>
     @endif
-
 </div>

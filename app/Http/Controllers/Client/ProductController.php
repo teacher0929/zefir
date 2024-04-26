@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Gender;
 use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -132,6 +133,31 @@ class ProductController extends Controller
 
     public function show($slug)
     {
+        $product = Product::where('slug', $slug)
+            ->with('brand', 'category')
+            ->firstOrFail();
 
+        $colors = Product::where('group_id', $product->group_id)
+            ->with('colorAttributeValue')
+            ->get();
+
+        $sizes = Variant::where('product_id', $product->id)
+            ->with('sizeAttributeValue')
+            ->get();
+
+        $similar = Product::whereNot('id', $product->id)
+            ->where('category_id', $product->category_id)
+            ->with('brand', 'category')
+            ->inRandomOrder()
+            ->take(6)
+            ->get();
+
+        return view('client.products.show')
+            ->with([
+                'product' => $product,
+                'colors' => $colors,
+                'sizes' => $sizes,
+                'similar' => $similar,
+            ]);
     }
 }
