@@ -7,7 +7,6 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Variant;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ProductVariantSeeder extends Seeder
@@ -17,7 +16,7 @@ class ProductVariantSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 250; $i++) {
             $category = Category::whereNotNull('grandparent_id')->inRandomOrder()->first();
             $brand = Brand::inRandomOrder()->first();
             $groupId = str()->random(10);
@@ -25,7 +24,7 @@ class ProductVariantSeeder extends Seeder
             $price = fake()->numberBetween(111, 999);
 
             $colors = [];
-            for ($j = 0; $j < rand(5, 8); $j++) {
+            for ($j = 0; $j < rand(3, 5); $j++) {
                 $color = AttributeValue::where('attribute_id', 1)->whereNotIn('id', $colors)->inRandomOrder()->first();
                 $colors[] = $color->id;
                 $productId = $groupId . '-' . str($color->name)->slug();
@@ -53,7 +52,7 @@ class ProductVariantSeeder extends Seeder
                 $product->update();
 
                 $sizes = [];
-                for ($k = 0; $k < rand(5, 8); $k++) {
+                for ($k = 0; $k < rand(3, 5); $k++) {
                     $size = AttributeValue::where('attribute_id', 2)->whereNotIn('id', $sizes)->inRandomOrder()->first();
                     $sizes[] = $size->id;
                     $variantId = $productId . '-' . str($size->name)->slug();
