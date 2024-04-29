@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -53,5 +54,21 @@ class Product extends Model
     public function variants()
     {
         return $this->hasMany(Variant::class);
+    }
+
+
+    public function getImage()
+    {
+        if (isset($this->image)) {
+
+        } else {
+            return asset('img/gender-' . $this->gender_id . '.jpg');
+        }
+    }
+
+
+    public function isNew()
+    {
+        return $this->created_at >= Carbon::now()->subMonths(2);
     }
 }

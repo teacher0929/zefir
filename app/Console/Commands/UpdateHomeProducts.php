@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Category;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +41,7 @@ class UpdateHomeProducts extends Command
             Product::whereIn('category_id', $grandparent->grandChildren->pluck('id'))
                 ->where('has_stock', 1)
                 ->where('has_discount', 1)
+                ->where('created_at', '>=', Carbon::now()->subMonths(2))
                 ->inRandomOrder()
                 ->take(6)
                 ->update(['home_category_id' => $grandparent->id]);

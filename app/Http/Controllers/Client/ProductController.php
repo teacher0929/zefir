@@ -136,6 +136,7 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)
             ->with('brand', 'category')
             ->firstOrFail();
+        $product->increment('viewed');
 
         $colors = Product::where('group_id', $product->group_id)
             ->with('colorAttributeValue')

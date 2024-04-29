@@ -3,6 +3,6 @@
     Home
 @endsection
 @section('content')
-    @include('client.home.brands')
-    @include('client.home.categories')
+    @include('client.home.index.brands')
+    @include('client.home.index.categories')
 @endsection

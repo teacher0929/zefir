@@ -6,12 +6,16 @@
     <div class="container py-4">
         <div class="row g-4">
             <div class="col-md-4 col-xl-3">
-                @if($product->image)
-
-                @else
-                    <img src="{{ asset('img/gender-' . $product->gender_id . '.jpg') }}" alt=""
-                         class="img-fluid rounded-3">
-                @endif
+                <div class="position-relative mb-2">
+                    <img src="{{ $product->getImage() }}" alt="" class="img-fluid rounded-3">
+                    <div class="position-absolute top-0 start-0 m-1">
+                        @if($product->isNew())
+                            <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">
+                                New
+                            </span>
+                        @endif
+                    </div>
+                </div>
             </div>
             <div class="col">
                 <div class="h4">
@@ -50,69 +54,12 @@
 
                 <div class="row">
                     <div class="col-md-10 col-xl-6">
-                        <div class="card my-4">
-                            <div class="card-body">
-                                <div class="h5">
-                                    COLORS
-                                </div>
-                                <div class="row row-cols-4 g-2">
-                                    @foreach($colors->sortBy('colorAttributeValue.name') as $color)
-                                        <div class="col position-relative">
-                                            <div class="mb-2">
-                                                @if($color->image)
-
-                                                @else
-                                                    <img src="{{ asset('img/gender-' . $color->gender_id . '.jpg') }}" alt="" class="img-fluid border {{ $product->id == $color->id ? 'border-danger':'' }} rounded-3">
-                                                @endif
-                                            </div>
-                                            <div class="h6 mb-0 text-center">
-                                                <a href="{{ route('products.show', $color->slug) }}"
-                                                   class="link-dark text-decoration-none stretched-link">
-                                                    {{ $color->colorAttributeValue->name }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card my-4">
-                            <div class="card-body">
-                                <div class="h5">
-                                    SIZES
-                                </div>
-                                <div class="row row-cols-4 g-2">
-                                    @foreach($sizes->sortBy('sizeAttributeValue.sort_order') as $size)
-                                        <div class="col">
-                                            <div class="h6 mb-0 text-center {{ $size->stock > 0 ? '':'text-bg-danger' }} border rounded-3 p-1 p-sm-2">
-                                                {{ $size->sizeAttributeValue->name }}
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
+                        @include('client.products.show.colors')
+                        @include('client.products.show.sizes')
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-secondary bg-opacity-10">
-        <div class="container-lg py-4">
-            <div class="h4 text-uppercase mb-4">
-                <a href="{{ route('products.index', ['category' => $product->category->slug]) }}"
-                   class="link-dark text-decoration-none">
-                    SIMILAR PRODUCTS <i class="bi-chevron-right"></i>
-                </a>
-            </div>
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-2 g-md-3">
-                @foreach($similar as $product)
-                    <div class="col">
-                        @include('client.app.product')
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    @include('client.products.show.similar')
 @endsection

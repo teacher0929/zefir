@@ -17,4 +17,14 @@ class Brand extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+
+    public function getImage()
+    {
+        if (isset($this->image)) {
+
+        } else {
+            return asset('img/brand.jpg');
+        }
+    }
 }

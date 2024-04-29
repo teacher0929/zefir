@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Variant;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class ProductVariantSeeder extends Seeder
@@ -22,6 +23,7 @@ class ProductVariantSeeder extends Seeder
             $groupId = str()->random(10);
             $groupName = fake()->unique()->streetName();
             $price = fake()->numberBetween(111, 999);
+            $createdAt = fake()->dateTimeBetween('-6 months', 'now');
 
             $colors = [];
             for ($j = 0; $j < rand(3, 5); $j++) {
@@ -47,6 +49,8 @@ class ProductVariantSeeder extends Seeder
                     'has_stock' => 1,
                     'viewed' => fake()->numberBetween(1, 999),
                     'random' => fake()->numberBetween(1, 9999),
+                    'created_at' => Carbon::parse($createdAt),
+                    'updated_at' => Carbon::parse($createdAt)->addDays(rand(0, 7)),
                 ]);
                 $product->slug = str($product->name)->slug() . '-' . $product->id;
                 $product->update();
@@ -65,6 +69,8 @@ class ProductVariantSeeder extends Seeder
                         'selling_price' => $product->selling_price,
                         'has_discount' => $product->has_discount,
                         'stock' => rand(0, 3),
+                        'created_at' => Carbon::parse($createdAt),
+                        'updated_at' => Carbon::parse($createdAt)->addDays(rand(0, 7)),
                     ]);
                 }
             }
