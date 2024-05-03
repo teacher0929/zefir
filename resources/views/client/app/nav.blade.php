@@ -38,6 +38,25 @@
                     </li>
                 @endforeach
             </ul>
+            <ul class="navbar-nav ms-auto">
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link link-warning" href="{{ route('admin.dashboard') }}" target="_blank">
+                            <i class="bi-speedometer"></i> Dashboard
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            Merchant
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{{ route('login') }}">Log in</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                        </ul>
+                    </li>
+                @endauth
+            </ul>
         </div>
     </div>
 </nav>
