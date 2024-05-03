@@ -14,20 +14,22 @@
                 <li class="nav-item">
                     <a class="nav-link link-light" href="{{ route('admin.products.index') }}"><i class="bi-box"></i> Products</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        Others
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('admin.genders.index') }}">Genders</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.categories.index') }}">Categories</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.brands.index') }}">Brands</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.attributes.index') }}">Attributes</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.attributeValues.index') }}">Attribute values</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.variants.index') }}">Variants</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.users.index') }}">Users</a></li>
-                    </ul>
-                </li>
+                @if(auth()->user()['is_admin'])
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            Others
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('admin.genders.index') }}">Genders</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.categories.index') }}">Categories</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.brands.index') }}">Brands</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.attributes.index') }}">Attributes</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.attributeValues.index') }}">Attribute values</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.variants.index') }}">Variants</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.users.index') }}">Users</a></li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
@@ -37,7 +39,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">
-                        <i class="bi-box-arrow-up-right"></i> {{ auth()->user()->name }}
+                        <i class="bi-box-arrow-up-right"></i> {{ auth()->user()['name'] }}
                     </a>
                     <form method="POST" action="{{ route('logout') }}" id="logout">
                         @csrf

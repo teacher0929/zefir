@@ -6,6 +6,7 @@ use App\Models\AttributeValue;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Variant;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class ProductVariantSeeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 250; $i++) {
+            $user = User::where('is_admin', 0)->inRandomOrder()->first();
             $category = Category::whereNotNull('grandparent_id')->inRandomOrder()->first();
             $brand = Brand::inRandomOrder()->first();
             $groupId = str()->random(10);
@@ -34,6 +36,7 @@ class ProductVariantSeeder extends Seeder
                 $hasDiscount = fake()->boolean(20);
 
                 $product = Product::create([
+                    'user_id' => $user->id,
                     'gender_id' => $category->gender_id,
                     'category_id' => $category->id,
                     'brand_id' => $brand->id,
@@ -62,6 +65,7 @@ class ProductVariantSeeder extends Seeder
                     $variantId = $productId . '-' . str($size->name)->slug();
 
                     Variant::create([
+                        'user_id' => $user->id,
                         'product_id' => $product->id,
                         'size_id' => $size->id,
                         'variant_id' => $variantId,

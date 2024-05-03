@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'name' => 'Admin',
                 'username' => 'admin',
+                'is_admin' => 1,
             ]);
         User::factory()
             ->count(10)

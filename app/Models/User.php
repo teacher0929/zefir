@@ -29,4 +29,16 @@ class User extends Authenticatable
             'updated_at' => 'datetime',
         ];
     }
+
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
+    }
 }

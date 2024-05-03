@@ -34,13 +34,14 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('banners', BannerController::class)->except('show');
-        Route::resource('genders', GenderController::class)->only('index');
+        Route::resource('banners', BannerController::class);
+        Route::resource('products', ProductController::class);
+
+        Route::resource('genders', GenderController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('brands', BrandController::class);
         Route::resource('attributes', AttributeController::class);
         Route::resource('attributeValues', AttributeValueController::class);
-        Route::resource('products', ProductController::class);
         Route::resource('variants', VariantController::class);
         Route::resource('users', UserController::class);
     });
