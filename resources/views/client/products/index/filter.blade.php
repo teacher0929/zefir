@@ -7,7 +7,7 @@
                 <option value>-</option>
                 @foreach($genders as $gender)
                     <option value="{{ $gender->slug }}" {{ $gender->slug == $f_gender ? 'selected':'' }}>
-                        {{ $gender->name }}
+                        {{ $gender->getName() }}
                     </option>
                 @endforeach
             </select>
