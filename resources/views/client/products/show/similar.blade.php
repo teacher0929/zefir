@@ -3,7 +3,7 @@
         <div class="h4 text-uppercase mb-4">
             <a href="{{ route('products.index', ['category' => $product->category->slug]) }}"
                class="link-dark text-decoration-none">
-                SIMILAR PRODUCTS <i class="bi-chevron-right"></i>
+                @lang('app.similarProducts') <i class="bi-chevron-right"></i>
             </a>
         </div>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-2 g-md-3">

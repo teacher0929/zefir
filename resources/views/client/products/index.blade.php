@@ -1,6 +1,6 @@
 @extends('client.layouts.app')
 @section('title')
-    Products
+    @lang('app.products')
 @endsection
 @section('content')
     <div class="container py-4">

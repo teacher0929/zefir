@@ -8,6 +8,5 @@ return [
     'password' => 'Açarsözi',
 
     'language' => 'Dil',
-    'id' => null,
-    'name' => 'Ady',
+
 ];

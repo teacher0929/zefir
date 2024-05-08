@@ -1,6 +1,6 @@
 @extends('client.layouts.app')
 @section('title')
-    Home
+    @lang('app.home')
 @endsection
 @section('content')
     @include('client.home.index.brands')

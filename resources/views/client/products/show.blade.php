@@ -1,6 +1,6 @@
 @extends('client.layouts.app')
 @section('title')
-    Products
+    @lang('app.products')
 @endsection
 @section('content')
     <div class="container py-4">
@@ -11,7 +11,7 @@
                     <div class="position-absolute top-0 start-0 m-1">
                         @if($product->isNew())
                             <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">
-                                New
+                                @lang('app.new')
                             </span>
                         @endif
                     </div>

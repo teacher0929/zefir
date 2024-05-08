@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Navbar">
     <div class="container-xl">
-        <a class="navbar-brand fw-bold" href="{{ route('home') }}">ZEFIR</a>
+        <a class="navbar-brand fw-bold" href="{{ route('home') }}">@lang('app.appName')</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
                 aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -44,21 +44,24 @@
                         @lang('app.language')
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a href="{{ route('locale', 'tm') }}" class="dropdown-item {{ app()->getLocale() == 'tm' ? 'fw-bold' : '' }}">Türkmen</a></li>
-                        <li><a href="{{ route('locale', 'ru') }}" class="dropdown-item {{ app()->getLocale() == 'ru' ? 'fw-bold' : '' }}">Русский</a></li>
-                        <li><a href="{{ route('locale', 'en') }}" class="dropdown-item {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">English</a></li>
+                        <li><a href="{{ route('locale', 'tm') }}"
+                               class="dropdown-item {{ app()->getLocale() == 'tm' ? 'fw-bold' : '' }}">Türkmen</a></li>
+                        <li><a href="{{ route('locale', 'ru') }}"
+                               class="dropdown-item {{ app()->getLocale() == 'ru' ? 'fw-bold' : '' }}">Русский</a></li>
+                        <li><a href="{{ route('locale', 'en') }}"
+                               class="dropdown-item {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">English</a></li>
                     </ul>
                 </li>
                 @auth
                     <li class="nav-item">
                         <a class="nav-link link-warning" href="{{ route('admin.dashboard') }}" target="_blank">
-                            <i class="bi-speedometer"></i> Dashboard
+                            <i class="bi-speedometer"></i> @lang('app.dashboard')
                         </a>
                     </li>
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            Merchant
+                            @lang('app.merchant')
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="{{ route('login') }}">@lang('app.login')</a></li>

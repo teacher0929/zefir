@@ -1,7 +1,7 @@
 <div class="card my-4">
     <div class="card-body">
-        <div class="h5">
-            COLORS
+        <div class="h5 text-uppercase">
+            @lang('app.colors')
         </div>
         <div class="row row-cols-4 g-2">
             @foreach($colors->sortBy('colorAttributeValue.name') as $color)
@@ -17,11 +17,11 @@
                     </div>
                     @if($color->has_stock)
                         <span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">
-                            <i class="bi-check-circle-fill"></i> In stock
+                            <i class="bi-check-circle-fill"></i> @lang('app.inStock')
                         </span>
                     @else
                         <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">
-                            <i class="bi-x-circle-fill"></i> Out of stock
+                            <i class="bi-x-circle-fill"></i> @lang('app.outOfStock')
                         </span>
                     @endif
                 </div>
