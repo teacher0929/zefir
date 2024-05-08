@@ -70,7 +70,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="sortBy" class="form-label fw-semibold">Sort By</label>
+            <label for="sortBy" class="form-label fw-semibold">@lang('app.sortBy')</label>
             <select class="form-select" id="sortBy" name="sortBy">
                 <option value {{ 'random' == $f_sortBy ? 'random':'' }}>
                     @lang('app.random')
@@ -79,7 +79,7 @@
                     @lang('app.newToOld')
                 </option>
                 <option value="lowToHigh" {{ 'lowToHigh' == $f_sortBy ? 'selected':'' }}>
-                    @lang('app.lowToHigh)
+                    @lang('app.lowToHigh')
                 </option>
                 <option value="highToLow" {{ 'highToLow' == $f_sortBy ? 'selected':'' }}>
                     @lang('app.highToLow')

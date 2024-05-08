@@ -27,6 +27,7 @@ return [
     'size' => 'Size',
     'sizes' => 'Sizes',
 
+    'sortBy' => 'Sort by',
     'random' => 'Random',
     'newToOld' => 'New to old',
     'lowToHigh' => 'Low to high',
