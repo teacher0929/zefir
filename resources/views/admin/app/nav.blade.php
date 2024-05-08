@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">
-                        <i class="bi-box-arrow-up-right"></i> {{ auth()->user()['name'] }}
+                        <i class="bi-box-arrow-up-right"></i> @lang('app.logout')
                     </a>
                     <form method="POST" action="{{ route('logout') }}" id="logout">
                         @csrf

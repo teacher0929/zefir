@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -23,5 +24,14 @@ class HomeController extends Controller
                 'brands' => $brands,
                 'categories' => $categories,
             ]);
+    }
+
+
+    public function locale($locale)
+    {
+        $locale = in_array($locale, ['tm', 'ru']) ? $locale : 'en';
+        session()->put('locale', $locale);
+
+        return redirect()->back();
     }
 }

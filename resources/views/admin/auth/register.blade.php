@@ -36,7 +36,7 @@
 
                     <div class="mb-3">
                         <label for="password" class="form-label fw-semibold">
-                            Password <span class="text-danger">*</span>
+                            @lang('app.password') <span class="text-danger">*</span>
                         </label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror"
                                id="password" name="password" value="{{ old('password') }}" required>
@@ -59,7 +59,7 @@
 
                     <button type="submit" class="btn btn-primary w-100">
                         <i class="bi-box-arrow-in-down-right"></i>
-                        Register
+                        @lang('app.register')
                     </button>
                 </form>
             </div>

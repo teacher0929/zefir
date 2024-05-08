@@ -39,6 +39,16 @@
                 @endforeach
             </ul>
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        @lang('app.language')
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="{{ route('locale', 'tm') }}" class="dropdown-item {{ app()->getLocale() == 'tm' ? 'fw-bold' : '' }}">Türkmen</a></li>
+                        <li><a href="{{ route('locale', 'ru') }}" class="dropdown-item {{ app()->getLocale() == 'ru' ? 'fw-bold' : '' }}">Русский</a></li>
+                        <li><a href="{{ route('locale', 'en') }}" class="dropdown-item {{ app()->getLocale() == 'en' ? 'fw-bold' : '' }}">English</a></li>
+                    </ul>
+                </li>
                 @auth
                     <li class="nav-item">
                         <a class="nav-link link-warning" href="{{ route('admin.dashboard') }}" target="_blank">
@@ -51,8 +61,8 @@
                             Merchant
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('login') }}">Log in</a></li>
-                            <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                            <li><a class="dropdown-item" href="{{ route('login') }}">@lang('app.login')</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">@lang('app.register')</a></li>
                         </ul>
                     </li>
                 @endauth
