@@ -37,11 +37,14 @@ Route::middleware('auth')
         Route::resource('banners', BannerController::class);
         Route::resource('products', ProductController::class);
 
-        Route::resource('genders', GenderController::class);
-        Route::resource('categories', CategoryController::class);
-        Route::resource('brands', BrandController::class);
-        Route::resource('attributes', AttributeController::class);
-        Route::resource('attributeValues', AttributeValueController::class);
-        Route::resource('variants', VariantController::class);
-        Route::resource('users', UserController::class);
+        Route::middleware(\App\Http\Middleware\IsAdminMiddleware::class)
+            ->group(function () {
+                Route::resource('genders', GenderController::class);
+                Route::resource('categories', CategoryController::class);
+                Route::resource('brands', BrandController::class);
+                Route::resource('attributes', AttributeController::class);
+                Route::resource('attributeValues', AttributeValueController::class);
+                Route::resource('variants', VariantController::class);
+                Route::resource('users', UserController::class);
+            });
     });
