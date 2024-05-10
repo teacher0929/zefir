@@ -8,5 +8,4 @@ return [
     'password' => 'Açarsözi',
 
     'language' => 'Dil',
-
 ];

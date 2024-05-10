@@ -8,5 +8,4 @@ return [
     'password' => 'Пароль',
 
     'language' => 'Язык',
-
 ];

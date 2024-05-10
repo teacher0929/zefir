@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Variant::class);
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
 }

@@ -16,6 +16,8 @@ return [
 
     'product' => 'Product',
     'products' => 'Products',
+    'user' => 'User',
+    'users' => 'Users',
     'gender' => 'Gender',
     'genders' => 'Genders',
     'category' => 'Category',
@@ -26,6 +28,11 @@ return [
     'colors' => 'Colors',
     'size' => 'Size',
     'sizes' => 'Sizes',
+
+    'id' => 'ID',
+    'name' => 'Name',
+    'description' => 'Description',
+    'price' => 'Price',
 
     'sortBy' => 'Sort by',
     'random' => 'Random',

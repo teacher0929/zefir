@@ -12,7 +12,7 @@
                     <div class="h6">
                         <a href="{{ route('products.show', $color->slug) }}"
                            class="link-dark text-decoration-none stretched-link">
-                            {{ $color->color->name }}
+                            {{ $color->color->getName() }}
                         </a>
                     </div>
                     @if($color->has_stock)

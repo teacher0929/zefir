@@ -19,15 +19,15 @@
                 <option value>-</option>
                 @foreach($categories as $grandparent)
                     <option value="{{ $grandparent->slug }}" {{ $grandparent->slug == $f_category ? 'selected':'' }}>
-                        {{ $grandparent->name }}
+                        {{ $grandparent->getName() }}
                     </option>
                     @foreach($grandparent->children as $parent)
                         <option value="{{ $parent->slug }}" {{ $parent->slug == $f_category ? 'selected':'' }}>
-                            {{ $grandparent->name }} / {{ $parent->name }}
+                            {{ $grandparent->getName() }} / {{ $parent->getName() }}
                         </option>
                         @foreach($parent->children as $child)
                             <option value="{{ $child->slug }}" {{ $child->slug == $f_category ? 'selected':'' }}>
-                                {{ $grandparent->name }} / {{ $parent->name }} / {{ $child->name }}
+                                {{ $grandparent->getName() }} / {{ $parent->getName() }} / {{ $child->getName() }}
                             </option>
                         @endforeach
                     @endforeach
@@ -41,7 +41,7 @@
                 <option value>-</option>
                 @foreach($brands as $brand)
                     <option value="{{ $brand->slug }}" {{ $brand->slug == $f_brand ? 'selected':'' }}>
-                        {{ $brand->name }}
+                        {{ $brand->getName() }}
                     </option>
                 @endforeach
             </select>
@@ -52,7 +52,7 @@
             <select class="form-select" id="colors" name="colors[]" multiple size="3">
                 @foreach($colors as $color)
                     <option value="{{ $color->id }}" {{ in_array($color->id, $f_colors) ? 'selected':'' }}>
-                        {{ $color->name }}
+                        {{ $color->getName() }}
                     </option>
                 @endforeach
             </select>
@@ -63,7 +63,7 @@
             <select class="form-select" id="sizes" name="sizes[]" multiple size="3">
                 @foreach($sizes as $size)
                     <option value="{{ $size->id }}" {{ in_array($size->id, $f_sizes) ? 'selected':'' }}>
-                        {{ $size->name }}
+                        {{ $size->getName() }}
                     </option>
                 @endforeach
             </select>

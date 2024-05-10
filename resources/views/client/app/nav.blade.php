@@ -13,21 +13,21 @@
                         <a class="nav-link dropdown-toggle"
                            href="{{ route('products.index', ['category' => $category->slug]) }}"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ $category->name }}
+                            {{ $category->getName() }}
                         </a>
                         <div class="dropdown-menu w-100 py-0 px-3">
                             @foreach($category->children as $child)
                                 <div class="my-3">
                                     <a class="h6 mb-3 link-dark text-decoration-none text-uppercase"
                                        href="{{ route('products.index', ['category' => $child->slug]) }}">
-                                        {{ $child->name }}
+                                        {{ $child->getName() }}
                                     </a>
                                     <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-0">
                                         @foreach($child->children as $grandchild)
                                             <div class="col">
                                                 <a class="link-dark text-decoration-none text-truncate"
                                                    href="{{ route('products.index', ['category' => $grandchild->slug]) }}">
-                                                    {{ $grandchild->name }}
+                                                    {{ $grandchild->getName() }}
                                                 </a>
                                             </div>
                                         @endforeach

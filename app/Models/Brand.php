@@ -19,6 +19,12 @@ class Brand extends Model
     }
 
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
     public function getImage()
     {
         if (isset($this->image)) {

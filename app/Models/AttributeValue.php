@@ -29,4 +29,10 @@ class AttributeValue extends Model
     {
         return $this->hasMany(Variant::class, 'size_id');
     }
+
+
+    public function getName()
+    {
+        return $this->name;
+    }
 }

@@ -77,4 +77,10 @@ class Product extends Model
     {
         return $this->created_at >= Carbon::now()->subMonths(2);
     }
+
+
+    public function getName()
+    {
+        return $this->name;
+    }
 }

@@ -21,19 +21,19 @@
                 <div class="h4">
                     <a href="{{ route('products.index', ['brand' => $product->brand->slug]) }}"
                        class="link-dark text-decoration-none">
-                        {{ $product->brand->name }}
+                        {{ $product->brand->getName() }}
                     </a>
                 </div>
                 <div class="h4">
                     <a href="{{ route('products.index', ['category' => $product->category->slug]) }}"
                        class="link-dark text-decoration-none">
-                        {{ $product->category->name }}
+                        {{ $product->category->->getName() }}
                     </a>
                 </div>
                 <div class="h3">
                     <a href="{{ route('products.show', $product->slug) }}"
                        class="link-secondary text-decoration-none">
-                        {{ $product->name }}
+                        {{ $product->getName() }}
                     </a>
                 </div>
                 @if($product->has_discount)

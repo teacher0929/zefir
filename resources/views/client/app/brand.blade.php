@@ -4,6 +4,6 @@
         <img src="{{ $brand->getImage() }}" alt="" class="img-fluid rounded-circle">
     </div>
     <div class="text-center">
-        {{ $brand->name }} <i class="bi-chevron-right"></i>
+        {{ $brand->getName() }} <i class="bi-chevron-right"></i>
     </div>
 </a>

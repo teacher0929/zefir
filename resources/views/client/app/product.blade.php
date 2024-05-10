@@ -10,15 +10,15 @@
         </div>
     </div>
     <div class="h6 mb-1">
-        {{ $product->brand->name }}
+        {{ $product->brand->getName() }}
     </div>
     <div class="h6 mb-1">
-        {{ $product->category->name }}
+        {{ $product->category->getName() }}
     </div>
     <div>
         <a href="{{ route('products.show', $product->slug) }}"
            class="link-secondary text-decoration-none stretched-link">
-            {{ $product->name }}
+            {{ $product->getName() }}
         </a>
     </div>
     @if($product->has_discount)

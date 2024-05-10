@@ -7,7 +7,7 @@
             @foreach($sizes->sortBy('size.sort_order') as $size)
                 <div class="col text-center">
                     <div class="h6 text-center border rounded-3 p-1 p-sm-2">
-                        {{ $size->size->name }}
+                        {{ $size->size->getName() }}
                     </div>
                     @if($size->stock > 0)
                         <span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">
