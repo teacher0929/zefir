@@ -23,7 +23,7 @@ class ProductVariantSeeder extends Seeder
             $category = Category::whereNotNull('grandparent_id')->inRandomOrder()->first();
             $brand = Brand::inRandomOrder()->first();
             $groupId = str()->random(10);
-            $groupName = fake()->unique()->streetName();
+            $productName = fake()->unique()->streetName();
             $price = fake()->numberBetween(111, 999);
             $createdAt = fake()->dateTimeBetween('-6 months', 'now');
 
@@ -32,7 +32,7 @@ class ProductVariantSeeder extends Seeder
                 $color = AttributeValue::where('attribute_id', 1)->whereNotIn('id', $colors)->inRandomOrder()->first();
                 $colors[] = $color->id;
                 $productId = $groupId . '-' . str($color->name)->slug();
-                $productName = $color->name . ' ' . $groupName;
+                $productName = $color->name . ' ' . $productName;
                 $hasDiscount = fake()->boolean(20);
 
                 $product = Product::create([
@@ -41,8 +41,8 @@ class ProductVariantSeeder extends Seeder
                     'category_id' => $category->id,
                     'brand_id' => $brand->id,
                     'color_id' => $color->id,
-                    'product_id' => $productId,
                     'group_id' => $groupId,
+                    'product_id' => $productId,
                     'name' => $productName,
                     'slug' => str()->random(5),
                     'description' => fake()->paragraph(rand(1, 3)),
@@ -65,7 +65,6 @@ class ProductVariantSeeder extends Seeder
                     $variantId = $productId . '-' . str($size->name)->slug();
 
                     Variant::create([
-                        'user_id' => $user->id,
                         'product_id' => $product->id,
                         'size_id' => $size->id,
                         'variant_id' => $variantId,

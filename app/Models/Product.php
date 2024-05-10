@@ -51,7 +51,7 @@ class Product extends Model
     }
 
 
-    public function colorAttributeValue()
+    public function color()
     {
         return $this->belongsTo(AttributeValue::class, 'color_id');
     }

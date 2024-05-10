@@ -4,7 +4,7 @@
             @lang('app.colors')
         </div>
         <div class="row row-cols-4 g-2">
-            @foreach($colors->sortBy('colorAttributeValue.name') as $color)
+            @foreach($colors->sortBy('color.name') as $color)
                 <div class="col position-relative text-center">
                     <div class="mb-2">
                         <img src="{{ $color->getImage() }}" alt="" class="img-fluid border {{ $product->id == $color->id ? 'border-danger':'' }} rounded-3">
@@ -12,7 +12,7 @@
                     <div class="h6">
                         <a href="{{ route('products.show', $color->slug) }}"
                            class="link-dark text-decoration-none stretched-link">
-                            {{ $color->colorAttributeValue->name }}
+                            {{ $color->color->name }}
                         </a>
                     </div>
                     @if($color->has_stock)

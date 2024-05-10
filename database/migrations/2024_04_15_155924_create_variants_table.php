@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->unsignedBigInteger('product_id')->index();
             $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
-            $table->unsignedBigInteger('size_id')->index()->nullable();
-            $table->foreign('size_id')->references('id')->on('attribute_values')->nullOnDelete();
+            $table->unsignedBigInteger('size_id')->index();
+            $table->foreign('size_id')->references('id')->on('attribute_values')->cascadeOnDelete();
             $table->string('variant_id')->index()->nullable();
             $table->double('discounted_price')->default(0);
             $table->double('selling_price')->default(0);

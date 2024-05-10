@@ -21,12 +21,12 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->unsignedBigInteger('brand_id')->index();
             $table->foreign('brand_id')->references('id')->on('brands')->cascadeOnDelete();
-            $table->unsignedBigInteger('color_id')->index()->nullable();
-            $table->foreign('color_id')->references('id')->on('attribute_values')->nullOnDelete();
+            $table->unsignedBigInteger('color_id')->index();
+            $table->foreign('color_id')->references('id')->on('attribute_values')->cascadeOnDelete();
             $table->unsignedBigInteger('home_category_id')->index()->nullable();
             $table->foreign('home_category_id')->references('id')->on('categories')->cascadeOnDelete();
-            $table->string('product_id')->index();
             $table->string('group_id')->index();
+            $table->string('product_id')->index();
             $table->string('name');
             $table->string('slug')->index();
             $table->text('description')->nullable();

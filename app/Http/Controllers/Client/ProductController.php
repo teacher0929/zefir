@@ -139,11 +139,11 @@ class ProductController extends Controller
         $product->increment('viewed');
 
         $colors = Product::where('group_id', $product->group_id)
-            ->with('colorAttributeValue')
+            ->with('color')
             ->get();
 
         $sizes = Variant::where('product_id', $product->id)
-            ->with('sizeAttributeValue')
+            ->with('size')
             ->get();
 
         $similar = Product::whereNot('id', $product->id)
