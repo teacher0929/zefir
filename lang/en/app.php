@@ -23,6 +23,7 @@ return [
     'add' => 'Add',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'close' => 'Close',
     'added' => 'Added',
     'updated' => 'Updated',
     'deleted' => 'Deleted',
@@ -58,6 +59,7 @@ return [
     'stock' => 'Stock',
     'groupId' => 'Group ID',
     'productId' => 'Product ID',
+    'variantId' => 'Variant ID',
 
     'new' => 'New',
     'sortBy' => 'Sort by',

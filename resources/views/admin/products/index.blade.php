@@ -41,11 +41,11 @@
                                     {{ $obj->name }}
                                 </a>
                             </div>
-                            <div class="small">
+                            <div class="small font-monospace">
                                 <span class="text-secondary">@lang('app.groupId')</span>: {{ $obj->group_id }}
                             </div>
-                            <div class="small">
-                                <span class="text-secondary">@lang('app.productId')</span>: {{ $obj->product_id }}
+                            <div class="small font-monospace">
+                                <i class="bi-upc-scan text-secondary"></i> {{ $obj->product_id }}
                             </div>
                         </td>
                         <td>
@@ -86,7 +86,19 @@
                             @endif
                         </td>
                         <td>
-
+                            @foreach($obj->variants->sortBy('size.sort_order') as $variant)
+                                <div class="{{ $loop->last ? '':'border-bottom' }}">
+                                    <div>
+                                        <span class="me-2">{{ $variant->size->getName() }}</span>
+                                        <span class="small">
+                                            <span class="text-secondary">@lang('app.stock')</span>: {{ $variant->stock }}
+                                        </span>
+                                    </div>
+                                    <div class="small font-monospace">
+                                        <i class="bi-upc-scan text-secondary"></i> {{ $variant->variant_id }}
+                                    </div>
+                                </div>
+                            @endforeach
                         </td>
                         <td>
                             <div class="mb-1">
@@ -106,14 +118,14 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                {{ $obj->name }}
+                                                {{ $obj->getName() }}
                                             </div>
                                             <div class="modal-footer">
                                                 <form method="POST" action="{{ route('admin.products.destroy', $obj->id) }}">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
 
-                                                    <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">@lang('app.close')</button>
                                                     <button type="submit" class="btn btn-dark btn-sm">@lang('app.delete')</button>
                                                 </form>
                                             </div>
