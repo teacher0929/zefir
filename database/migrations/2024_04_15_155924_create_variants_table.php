@@ -18,9 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('size_id')->index();
             $table->foreign('size_id')->references('id')->on('attribute_values')->cascadeOnDelete();
             $table->string('variant_id')->index()->nullable();
-            $table->double('discounted_price')->default(0);
-            $table->double('selling_price')->default(0);
-            $table->boolean('has_discount')->default(0);
             $table->unsignedInteger('stock')->default(0);
             $table->timestamps();
         });

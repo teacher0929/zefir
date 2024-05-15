@@ -146,9 +146,6 @@ class ProductController extends Controller
                 'product_id' => $obj->id,
                 'size_id' => $size->id,
                 'variant_id' => $variantId,
-                'discounted_price' => $obj->discounted_price,
-                'selling_price' => $obj->selling_price,
-                'has_discount' => $obj->has_discount,
                 'stock' => 1,
             ]);
         }
