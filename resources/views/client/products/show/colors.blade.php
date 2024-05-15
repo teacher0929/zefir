@@ -7,7 +7,7 @@
             @foreach($colors->sortBy('color.name') as $color)
                 <div class="col position-relative text-center">
                     <div class="mb-2">
-                        <img src="{{ $color->getImage() }}" alt="" class="img-fluid border {{ $product->id == $color->id ? 'border-danger':'' }} rounded-3">
+                        <img src="{{ $color->getImage() }}" alt="" class="img-fluid rounded-3 border {{ $product->id == $color->id ? 'border-danger':'' }} rounded-3">
                     </div>
                     <div class="h6">
                         <a href="{{ route('products.show', $color->slug) }}"

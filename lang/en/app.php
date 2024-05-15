@@ -9,8 +9,8 @@ return [
     'username' => 'Username',
     'password' => 'Password',
     'passwordConfirmation' => 'Password confirmation',
-    'successfullyLoggedIn' => 'Successfully logged in!',
-    'successfullyLoggedOut' => 'Successfully logged out!',
+    'successfullyLoggedIn' => 'Successfully logged in',
+    'successfullyLoggedOut' => 'Successfully logged out',
 
 
     'language' => 'Language',
@@ -22,6 +22,7 @@ return [
     'newMerchant' => 'New merchant',
     'add' => 'Add',
     'edit' => 'Edit',
+    'delete' => 'Delete',
     'added' => 'Added',
     'updated' => 'Updated',
     'deleted' => 'Deleted',
@@ -44,11 +45,19 @@ return [
     'products' => 'Products',
     'variant' => 'Variant',
     'variants' => 'Variants',
+    'attribute' => 'Attribute',
+    'attributes' => 'Attributes',
+    'attributeValue' => 'Attribute value',
+    'attributeValues' => 'Attribute values',
 
     'id' => 'ID',
+    'image' => 'Image',
     'name' => 'Name',
     'description' => 'Description',
     'price' => 'Price',
+    'stock' => 'Stock',
+    'groupId' => 'Group ID',
+    'productId' => 'Product ID',
 
     'new' => 'New',
     'sortBy' => 'Sort by',

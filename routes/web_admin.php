@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VariantController;
+use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')
@@ -34,17 +35,17 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('banners', BannerController::class);
+        Route::resource('banners', BannerController::class)->only('index');
         Route::resource('products', ProductController::class);
 
-        Route::middleware(\App\Http\Middleware\IsAdminMiddleware::class)
+        Route::middleware(IsAdminMiddleware::class)
             ->group(function () {
-                Route::resource('genders', GenderController::class);
-                Route::resource('categories', CategoryController::class);
-                Route::resource('brands', BrandController::class);
-                Route::resource('attributes', AttributeController::class);
-                Route::resource('attributeValues', AttributeValueController::class);
-                Route::resource('variants', VariantController::class);
-                Route::resource('users', UserController::class);
+                Route::resource('genders', GenderController::class)->only('index');
+                Route::resource('categories', CategoryController::class)->only('index');
+                Route::resource('brands', BrandController::class)->only('index');
+                Route::resource('attributes', AttributeController::class)->only('index');
+                Route::resource('attributeValues', AttributeValueController::class)->only('index');
+                Route::resource('variants', VariantController::class)->only('index');
+                Route::resource('users', UserController::class)->only('index');
             });
     });
