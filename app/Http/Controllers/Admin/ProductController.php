@@ -116,8 +116,8 @@ class ProductController extends Controller
         $category = Category::findOrFail($request->category);
         $brand = Brand::findOrFail();
         $color = AttributeValue::where('attribute_id', 1)->findOrFail($request->color);
-        $discountedPrice = round($request->price, 1);
-        $sellingPrice = round($request->price, 1);
+        $discountedPrice = round($request->discounted_price, 1);
+        $sellingPrice = round($request->selling_price, 1);
 
         $obj = Product::create([
             'user_id' => auth()->id(),
@@ -132,7 +132,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'discounted_price' => $discountedPrice,
             'selling_price' => $sellingPrice,
-            'has_discount' => $discountedPrice == $sellingPrice ? 0 : 1,
+            'has_discount' => $sellingPrice > $discountedPrice ? 1 : 0,
             'has_stock' => 1,
         ]);
         $obj->slug = str($obj->name)->slug() . '-' . $obj->id;
