@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'appName' => 'ZEFIR',
+
     'login' => 'Login',
     'register' => 'Register',
     'logout' => 'Logout',
@@ -10,14 +12,13 @@ return [
     'successfullyLoggedIn' => 'Successfully logged in!',
     'successfullyLoggedOut' => 'Successfully logged out!',
 
-    'appName' => 'ZEFIR',
+
     'language' => 'Language',
     'home' => 'Home',
     'admin' => 'Admin',
     'more' => 'More',
     'dashboard' => 'Dashboard',
     'merchant' => 'Merchant',
-    'new' => 'New',
     'newMerchant' => 'New merchant',
     'add' => 'Add',
     'edit' => 'Edit',
@@ -25,10 +26,10 @@ return [
     'updated' => 'Updated',
     'deleted' => 'Deleted',
 
-    'product' => 'Product',
-    'products' => 'Products',
     'user' => 'User',
     'users' => 'Users',
+    'banner' => 'Banner',
+    'banners' => 'Banners',
     'gender' => 'Gender',
     'genders' => 'Genders',
     'category' => 'Category',
@@ -39,12 +40,17 @@ return [
     'colors' => 'Colors',
     'size' => 'Size',
     'sizes' => 'Sizes',
+    'product' => 'Product',
+    'products' => 'Products',
+    'variant' => 'Variant',
+    'variants' => 'Variants',
 
     'id' => 'ID',
     'name' => 'Name',
     'description' => 'Description',
     'price' => 'Price',
 
+    'new' => 'New',
     'sortBy' => 'Sort by',
     'random' => 'Random',
     'newToOld' => 'New to old',
@@ -52,7 +58,6 @@ return [
     'highToLow' => 'High to low',
     'filter' => 'Filter',
     'clear' => 'Clear',
-
     'similarProducts' => 'Similar products',
     'inStock' => 'In stock',
     'outOfStock' => 'Out of stock',
