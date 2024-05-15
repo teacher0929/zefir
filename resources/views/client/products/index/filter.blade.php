@@ -94,7 +94,7 @@
                 </button>
             </div>
             <div class="col">
-                <a href="{{ url()->current() }}" class="btn btn-secondary w-100">
+                <a href="{{ url()->current() }}" class="btn btn-light w-100">
                     @lang('app.clear')
                 </a>
             </div>

@@ -18,21 +18,20 @@
                 </div>
             </div>
             <div class="col">
-                <div class="h4">
+                <div class="h4 fw-semibold">
                     <a href="{{ route('products.index', ['brand' => $product->brand->slug]) }}"
                        class="link-dark text-decoration-none">
                         {{ $product->brand->getName() }}
                     </a>
                 </div>
-                <div class="h4">
+                <div class="h4 fw-semibold">
                     <a href="{{ route('products.index', ['category' => $product->category->slug]) }}"
                        class="link-dark text-decoration-none">
-                        {{ $product->category->->getName() }}
+                        {{ $product->category->getName() }}
                     </a>
                 </div>
                 <div class="h3">
-                    <a href="{{ route('products.show', $product->slug) }}"
-                       class="link-secondary text-decoration-none">
+                    <a href="{{ route('products.show', $product->slug) }}" class="link-dark text-decoration-none">
                         {{ $product->getName() }}
                     </a>
                 </div>

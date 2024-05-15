@@ -9,18 +9,16 @@
             @endif
         </div>
     </div>
-    <div class="h6 mb-1">
+    <div class="small fw-semibold">
         {{ $product->brand->getName() }}
     </div>
-    <div class="h6 mb-1">
+    <div class="small fw-semibold">
         {{ $product->category->getName() }}
     </div>
-    <div>
-        <a href="{{ route('products.show', $product->slug) }}"
-           class="link-secondary text-decoration-none stretched-link">
-            {{ $product->getName() }}
-        </a>
-    </div>
+    <a href="{{ route('products.show', $product->slug) }}"
+       class="d-block small link-dark text-decoration-none stretched-link">
+        {{ $product->getName() }}
+    </a>
     @if($product->has_discount)
         <div class="fw-semibold text-danger">
             {{ number_format($product->discounted_price, 2, '.', ' ') }} <small>TMT</small>

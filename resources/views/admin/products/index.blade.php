@@ -34,7 +34,11 @@
                         <td>{{ $obj->category->getName() }}</td>
                         <td>{{ $obj->brand->getName() }}</td>
                         <td>{{ $obj->color->getName() }}</td>
-                        <td>{{ $obj->name }}</td>
+                        <td>
+                            <a href="{{ route('products.show', $obj->slug) }}" class="text-decoration-none" target="_blank">
+                                {{ $obj->name }}
+                            </a>
+                        </td>
                         <td>
 
                         </td>
