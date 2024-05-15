@@ -1,16 +1,16 @@
 @extends('admin.layouts.app')
 @section('title')
-    Products
+    @lang('app.products')
 @endsection
 @section('content')
-    <div class="container py-4">
+    <div class="container-xxl py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="h4 mb-0">Products</div>
-            <div><a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm">Add</a></div>
+            <div class="h3 mb-0">@lang('app.products')</div>
+            <div><a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm"><i class="bi-plus-lg"></i> Add</a></div>
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
+            <table class="table table-striped table-hover table-bordered table-sm">
                 <thead>
                     <tr>
                         <th>@lang('app.id')</th>

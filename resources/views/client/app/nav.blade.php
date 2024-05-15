@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Navbar">
-    <div class="container-xl">
+    <div class="container-xxl">
         <a class="navbar-brand fw-bold" href="{{ route('home') }}">@lang('app.appName')</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
                 aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">

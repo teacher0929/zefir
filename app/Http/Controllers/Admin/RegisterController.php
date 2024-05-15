@@ -38,7 +38,7 @@ class RegisterController extends Controller
 
         return to_route('admin.dashboard')
             ->with([
-                'success' => 'Successfully logged in!'
+                'success' => trans('app.successfullyLoggedIn'),
             ]);
     }
 }

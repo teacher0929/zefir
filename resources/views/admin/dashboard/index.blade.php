@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 @section('title')
-    Dashboard
+    @lang('app.dashboard')
 @endsection
 @section('content')
-    <div class="container py-4">
+    <div class="container-xxl py-4">
         <div class="h4 mb-3">
-            Dashboard
+            @lang('app.dashboard')
         </div>
     </div>
 @endsection

@@ -1,11 +1,13 @@
 @extends('admin.layouts.app')
 @section('title')
-    Products
+    @lang('app.products')
 @endsection
 @section('content')
-    <div class="container py-4">
+    <div class="container-xxl py-4">
         <div class="h4 mb-3">
-            Products / Edit
+            <a href="{{ route('admin.products.index') }}" class="text-decoration-none">
+                <i class="bi-chevron-left"></i> @lang('app.products')
+            </a> / @lang('app.edit')
         </div>
     </div>
 @endsection

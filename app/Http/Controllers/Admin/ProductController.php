@@ -155,7 +155,7 @@ class ProductController extends Controller
 
         return to_route('admin.products.index')
             ->with([
-                'success' => 'Product created!'
+                'success' => trans('app.product') . ' ' . trans('app.added'),
             ]);
     }
 
@@ -214,7 +214,7 @@ class ProductController extends Controller
 
         return to_route('admin.products.index')
             ->with([
-                'success' => 'Product updated!'
+                'success' => trans('app.product') . ' ' . trans('app.updated'),
             ]);
     }
 
@@ -232,7 +232,7 @@ class ProductController extends Controller
 
         return to_route('admin.products.index')
             ->with([
-                'success' => 'Product deleted!'
+                'success' => trans('app.product') . ' ' . trans('app.deleted'),
             ]);
     }
 }

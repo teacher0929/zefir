@@ -1,20 +1,20 @@
 @extends('client.layouts.app')
 @section('title')
-    New Merchant
+    @lang('app.newMerchant')
 @endsection
 @section('content')
-    <div class="container py-4">
+    <div class="container-xxl py-4">
         <div class="row justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3">
                 <div class="h4 text-center mb-3">
-                    New Merchant
+                    @lang('app.newMerchant')
                 </div>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
                     <div class="mb-3">
                         <label for="name" class="form-label fw-semibold">
-                            Name <span class="text-danger">*</span>
+                            @lang('app.name') <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                name="name" value="{{ old('name') }}" required autofocus>
@@ -25,7 +25,7 @@
 
                     <div class="mb-3">
                         <label for="username" class="form-label fw-semibold">
-                            Username <span class="text-danger">*</span>
+                            @lang('app.username') <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
                                name="username" value="{{ old('username') }}" required>
@@ -47,7 +47,7 @@
 
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label fw-semibold">
-                            Password confirmation <span class="text-danger">*</span>
+                            @lang('app.passwordConfirmation') <span class="text-danger">*</span>
                         </label>
                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
                                id="password_confirmation" name="password_confirmation"

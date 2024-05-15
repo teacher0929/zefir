@@ -3,7 +3,7 @@
     @lang('app.products')
 @endsection
 @section('content')
-    <div class="container py-4">
+    <div class="container-xxl py-4">
         <div class="row g-4">
             <div class="col-md-4 col-xl-3">
                 <div class="position-relative mb-2">

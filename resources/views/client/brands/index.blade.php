@@ -3,7 +3,7 @@
     @lang('app.brands')
 @endsection
 @section('content')
-    <div class="container-lg py-4">
+    <div class="container-xxl py-4">
         <div class="h4 text-uppercase mb-4">
             @lang('app.brands')
         </div>

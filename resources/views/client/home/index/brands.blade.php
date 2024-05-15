@@ -1,4 +1,4 @@
-<div class="container-lg py-4">
+<div class="container-xxl py-4">
     <div class="h4 text-uppercase mb-4">
         <a href="{{ route('brands.index') }}" class="link-dark text-decoration-none">
             @lang('app.brands') <i class="bi-chevron-right"></i>

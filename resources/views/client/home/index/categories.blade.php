@@ -1,6 +1,6 @@
 @foreach($categories as $category)
     <div class="{{ $loop->odd ? 'bg-secondary bg-opacity-10':'' }}">
-        <div class="container-lg py-4">
+        <div class="container-xxl py-4">
             <div class="h4 text-uppercase mb-4">
                 <a href="{{ route('products.index', ['category' => $category->slug]) }}"
                    class="link-dark text-decoration-none">

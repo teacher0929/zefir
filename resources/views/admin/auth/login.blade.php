@@ -3,7 +3,7 @@
     @lang('app.login')
 @endsection
 @section('content')
-    <div class="container py-4">
+    <div class="container-xxl py-4">
         <div class="row justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3">
                 <div class="h4 text-center mb-3">
@@ -14,7 +14,7 @@
 
                     <div class="mb-3">
                         <label for="username" class="form-label fw-semibold">
-                            Username <span class="text-danger">*</span>
+                            @lang('app.username') <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
                                name="username" value="{{ old('username') }}" required autofocus>
