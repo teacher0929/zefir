@@ -56,6 +56,8 @@ return [
     'name' => 'Name',
     'description' => 'Description',
     'price' => 'Price',
+    'discountedPrice' => 'Discounted price',
+    'sellingPrice' => 'Selling price',
     'stock' => 'Stock',
     'groupId' => 'Group ID',
     'productId' => 'Product ID',

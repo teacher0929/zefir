@@ -104,17 +104,17 @@ class ProductController extends Controller
             'category' => 'required|integer|min:1',
             'brand' => 'required|integer|min:1',
             'color' => 'required|integer|min:1',
-            'sizes' => 'required|array|min:0',
-            'sizes.*' => 'required|integer|min:1',
             'group_id' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:25500',
+            'description' => 'nullable|string|max:25500',
             'discounted_price' => 'required|numeric|min:0',
             'selling_price' => 'required|numeric|min:0',
+            'sizes' => 'required|array|min:0',
+            'sizes.*' => 'required|integer|min:1',
         ]);
 
         $category = Category::findOrFail($request->category);
-        $brand = Brand::findOrFail();
+        $brand = Brand::findOrFail($request->brand);
         $color = AttributeValue::where('attribute_id', 1)->findOrFail($request->color);
         $discountedPrice = round($request->discounted_price, 1);
         $sellingPrice = round($request->selling_price, 1);
