@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\AttributeValue;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Gender;
 use App\Models\Product;
 use App\Models\Variant;
 use Illuminate\Http\Request;
@@ -34,9 +33,10 @@ class ProductController extends Controller
         $f_color = $request->has('color') ? $request->color : null;
         $f_size = $request->has('size') ? $request->size : null;
 
-        $objs = Product::when(isset($f_user), function ($query) use ($f_user) {
-            return $query->where('user_id', $f_user);
-        })
+        $objs = Product::onlyOwner()
+            ->when(isset($f_user), function ($query) use ($f_user) {
+                return $query->where('user_id', $f_user);
+            })
             ->when(isset($f_gender), function ($query) use ($f_gender) {
                 return $query->where('gender_id', $f_gender);
             })
@@ -161,7 +161,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $obj = Product::with('user', 'gender', 'category', 'brand', 'color', 'variants.size')
+        $obj = Product::onlyOwner()
+            ->with('user', 'gender', 'category', 'brand', 'color', 'variants.size')
             ->findOrFail($id);
 
         return view('admin.products.show')
@@ -175,7 +176,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $obj = Product::findOrFail($id);
+        $obj = Product::onlyOwner()
+            ->findOrFail($id);
         $categories = Category::whereNull('parent_id')
             ->with('children.children')
             ->orderBy('sort_order')
@@ -220,7 +222,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $obj = Product::findOrFail($id);
+        $obj = Product::onlyOwner()
+            ->findOrFail($id);
         if (isset($obj->image)) {
             Storage::delete($obj->image);
             Storage::delete('sm/' . $obj->image);

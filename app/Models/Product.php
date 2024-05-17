@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -60,6 +61,14 @@ class Product extends Model
     public function variants()
     {
         return $this->hasMany(Variant::class);
+    }
+
+
+    public function scopeOnlyOwner(Builder $query): void
+    {
+        $query->when(!auth()->user()['is_admin'], function ($query) {
+            return $query->where('user_id', auth()->id());
+        });
     }
 
 

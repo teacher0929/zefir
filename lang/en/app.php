@@ -62,6 +62,8 @@ return [
     'groupId' => 'Group ID',
     'productId' => 'Product ID',
     'variantId' => 'Variant ID',
+    'categoriesCount' => 'Categories count',
+    'productsCount' => 'Products count',
 
     'new' => 'New',
     'sortBy' => 'Sort by',

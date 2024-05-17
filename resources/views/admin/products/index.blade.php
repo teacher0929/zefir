@@ -140,5 +140,6 @@
                 </tbody>
             </table>
         </div>
+        {{ $objs->links() }}
     </div>
 @endsection
