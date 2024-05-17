@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
-use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
