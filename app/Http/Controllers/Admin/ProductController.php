@@ -111,6 +111,7 @@ class ProductController extends Controller
             'selling_price' => 'required|numeric|min:0',
             'sizes' => 'required|array|min:0',
             'sizes.*' => 'required|integer|min:1',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048|dimensions:width=1000,height=1000',
         ]);
 
         $category = Category::findOrFail($request->category);
@@ -127,7 +128,7 @@ class ProductController extends Controller
             'color_id' => $color->id,
             'group_id' => $request->group_id,
             'product_id' => $request->group_id . '-' . str($color->name)->slug(),
-            'name' => $color->name . ' ' . $request->name,
+            'name' => $request->name,
             'slug' => str()->random(5),
             'description' => $request->description,
             'discounted_price' => $discountedPrice,
@@ -135,6 +136,7 @@ class ProductController extends Controller
             'has_discount' => $sellingPrice > $discountedPrice ? 1 : 0,
             'has_stock' => 1,
         ]);
+
         $obj->slug = str($obj->name)->slug() . '-' . $obj->id;
         $obj->update();
 
@@ -150,24 +152,18 @@ class ProductController extends Controller
             ]);
         }
 
+        if ($request->hasfile('image')) {
+            $image = $request->file('image');
+            $imageName = str()->random(5) . '.' . $request->file()->extension();
+            Storage::put('public/product/' . $imageName, $image);
+
+            $obj->image = 'product/' . $imageName;
+            $obj->update();
+        }
+
         return to_route('admin.products.index')
             ->with([
                 'success' => trans('app.product') . ' ' . trans('app.added'),
-            ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $obj = Product::onlyOwner()
-            ->with('user', 'gender', 'category', 'brand', 'color', 'variants.size')
-            ->findOrFail($id);
-
-        return view('admin.products.show')
-            ->with([
-                'obj' => $obj,
             ]);
     }
 
@@ -209,7 +205,74 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'category' => 'required|integer|min:1',
+            'brand' => 'required|integer|min:1',
+            'color' => 'required|integer|min:1',
+            'group_id' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:25500',
+            'discounted_price' => 'required|numeric|min:0',
+            'selling_price' => 'required|numeric|min:0',
+            'sizes' => 'required|array|min:0',
+            'sizes.*' => 'required|integer|min:1',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048|dimensions:width=1000,height=1000',
+        ]);
+
+        $category = Category::findOrFail($request->category);
+        $brand = Brand::findOrFail($request->brand);
+        $color = AttributeValue::where('attribute_id', 1)->findOrFail($request->color);
+        $discountedPrice = round($request->discounted_price, 1);
+        $sellingPrice = round($request->selling_price, 1);
+
+        $obj = Product::onlyOwner()
+            ->findOrFail($id);
+        $obj->gender_id = $category->gender_id;
+        $obj->category_id = $category->id;
+        $obj->brand_id = $brand->id;
+        $obj->color_id = $color->id;
+        $obj->group_id = $request->group_id;
+        $obj->product_id = $request->group_id . '-' . str($color->name)->slug();
+        $obj->name = $request->name;
+        $obj->slug = str()->random(5);
+        $obj->description = $request->description;
+        $obj->discounted_price = $discountedPrice;
+        $obj->selling_price = $sellingPrice;
+        $obj->has_discount = $sellingPrice > $discountedPrice ? 1 : 0;
+        $obj->has_stock = 1;
+        $obj->update();
+
+        $obj->slug = str($obj->name)->slug() . '-' . $obj->id;
+        $obj->update();
+
+        Variant::where('product_id', $obj->id)
+            ->update(['stock' => 0]);
+
+        foreach ($request->sizes as $size) {
+            $size = AttributeValue::where('attribute_id', 2)->findOrFail($size);
+            $variantId = $obj->product_id . '-' . str($size->name)->slug();
+
+            Variant::updateOrCreate([
+                'product_id' => $obj->id,
+                'size_id' => $size->id,
+            ], [
+                'variant_id' => $variantId,
+                'stock' => 1,
+            ]);
+        }
+
+        if ($request->hasfile('image')) {
+            if (isset($obj->image)) {
+                Storage::delete($obj->image);
+            }
+
+            $image = $request->file('image');
+            $imageName = str()->random(5) . '.' . $request->file()->extension();
+            Storage::put('public/product/' . $imageName, $image);
+
+            $obj->image = 'product/' . $imageName;
+            $obj->update();
+        }
 
         return to_route('admin.products.index')
             ->with([
@@ -226,7 +289,6 @@ class ProductController extends Controller
             ->findOrFail($id);
         if (isset($obj->image)) {
             Storage::delete($obj->image);
-            Storage::delete('sm/' . $obj->image);
         }
         $obj->delete();
 

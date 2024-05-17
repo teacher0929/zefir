@@ -35,8 +35,8 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('banners', BannerController::class)->only('index');
-        Route::resource('products', ProductController::class);
+        Route::resource('banners', BannerController::class)->except('show');
+        Route::resource('products', ProductController::class)->except('show');
 
         Route::middleware(IsAdminMiddleware::class)
             ->group(function () {
